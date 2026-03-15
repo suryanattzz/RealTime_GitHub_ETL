@@ -1,0 +1,47 @@
+# Python cache and bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+myenv3.13/
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Secrets and local env
+.env
+.env.*
+!.env.example
+
+# Local tooling
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Text and document files
+*.txt
+*.doc
+*.docx
+
+# Project docs folder
+docs/
+
+# Generated streaming data dumps (keep folder, ignore payload files)
+data/*.json
+!data/.gitkeep
+
+# Generated dashboard exports
+dashboard/*.pdf
+
+# Spark / Databricks scratch artifacts
+*.crc
+*.log
+metastore_db/
+spark-warehouse/

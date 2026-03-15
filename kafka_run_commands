@@ -1,0 +1,65 @@
+GitHub -> Kafka -> File ETL Execution Guide
+
+1. Start Kafka infrastructure
+
+```bash
+cd kafka-docker
+docker compose up -d
+docker ps
+```
+
+2. Create topic once (skip if it already exists)
+
+```bash
+docker exec -it kafka kafka-topics --create --topic github-events --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
+```
+
+3. Verify topic
+
+```bash
+docker exec -it kafka kafka-topics --list --bootstrap-server localhost:9092
+docker exec -it kafka kafka-topics --describe --topic github-events --bootstrap-server localhost:9092
+```
+
+4. Install Python dependencies
+
+```bash
+cd ..
+python -m pip install -r requirements.txt
+```
+
+5. Start consumer first (Terminal 1)
+
+```bash
+python main.py --mode consumer
+```
+
+6. Start producer next (Terminal 2)
+
+```bash
+python main.py --mode producer
+```
+
+7. Validate output files
+
+```bash
+dir data
+```
+
+You should see files like `github_events_<timestamp>.json`.
+
+8. Stop services
+
+- Stop Python processes with `Ctrl + C` in each terminal.
+- Stop Kafka when done:
+
+```bash
+cd kafka-docker
+docker compose down
+```
+
+Troubleshooting
+
+- `NoBrokersAvailable`: ensure `docker ps` shows both `kafka` and `zookeeper`.
+- No producer data or many GitHub API errors: add your token in `config/config.py` as `GITHUB_TOKEN`.
+- Kafka topic error: run the topic-create command again and then list topics.
