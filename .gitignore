@@ -27,6 +27,7 @@ Thumbs.db
 
 # Text and document files
 *.txt
+!requirements.txt
 *.doc
 *.docx
 
