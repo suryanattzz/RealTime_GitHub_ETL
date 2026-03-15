@@ -157,6 +157,8 @@ Outputs are often removed in clean notebooks to reduce git noise and avoid huge 
 - For now, dashboard evidence is kept as screenshot(s) in `dashboard/screenshots/`.
 - Genie prompt template: `dashboard/genie_dashboard_template.md`
 
+![Databricks Dashboard Screenshot](dashboard/screenshots/Dashboard%20screenshot.jpeg)
+
 ## Notes
 
 - Generated JSON payloads in `data/` are ignored by git.
